@@ -9,7 +9,10 @@ const Header = () => {
         <ul className="flex px-8 lg:px-32 gap-x-10 content-center leading-0 h-0">
           {navigation.map((item) => (
             <li className="mt-6 cursor-pointer" key={item.title}>
-              <a href={`#${item.title}`}>
+              <a
+                className="font-semibold text-xl text-white"
+                href={`#${item.title}`}
+              >
                 {item.title}
               </a>
             </li>
