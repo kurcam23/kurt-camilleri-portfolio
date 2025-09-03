@@ -1,26 +1,32 @@
 import React from "react";
 import config from "../index.json";
+import { FaAngleUp } from "react-icons/fa"; // import the up caret
 
 const Footer = () => {
   const footer = config.footer;
-  const getYear = () => {
-    return new Date().getFullYear();
+  const getYear = () => new Date().getFullYear();
+
+  const scrollToTop = (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <div className="footer px-8 py-16 flex justify-center align-center flex-col bg-neutral-800">
-      <div className="mx-auto text-3xl text-neutral-400 mb-8 space-x-10">
-        <a rel="noreferrer" href={footer.twitter} target="_blank">
-          <i className="devicon-twitter-original"></i>
-        </a>
-        <a rel="noreferrer" href={footer.linkedin} target="_blank">
-          <i className="devicon-linkedin-plain"></i>
-        </a>
-        <a rel="noreferrer" href={footer.github} target="_blank">
-          <i className="devicon-github-original"></i>
-        </a>
+    <footer className="footer px-6 py-6 flex flex-col items-center bg-neutral-800">
+      {/* Back to top button */}
+      <div className="mb-2">
+        <button
+          onClick={scrollToTop}
+          className="text-neutral-400 hover:text-white transition-colors duration-300"
+        >
+          <FaAngleUp className="w-8 h-8 hover:cursor-pointer" />
+        </button>
       </div>
-    </div>
+
+      <div className="text-neutral-400 text-center">
+        {getYear()} Kurt Camilleri
+      </div>
+    </footer>
   );
 };
 
